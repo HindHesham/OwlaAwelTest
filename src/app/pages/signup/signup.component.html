@@ -1,0 +1,88 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center" class="c">
+        <mat-card fxFlex="500px" fxFlex.xs="100%">
+          <mat-card-content>
+            <form enctype="multipart/form-data" [formGroup]="signupForm" (ngSubmit) = "onSubmit(signupForm.value)" fxLayout="column wrap"
+            fxLayoutAlign="center center" fxLayoutGap="10px">
+         
+            <table class="fullwidth" cellspacing="5">
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <input matInput  type="text" placeholder="First Name" formControlName="firstName">
+                            <mat-error *ngIf="hasError('firstName', 'required')" >First Name is required</mat-error>
+    
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <input matInput placeholder="Last Name" formControlName="lastName">
+                            <mat-error *ngIf="hasError('lastName', 'required')" >Last Name is required</mat-error>
+    
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>    
+    
+            <!-- <mat-form-field>
+              
+                <input matInput [matDatepicker]="picker"  placeholder="Choose a date" >
+
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year"  [startAt]="startDate" (selectedChanged)="onDate(date.value)"></mat-datepicker>
+            </mat-form-field> -->
+
+
+              <mat-form-field>
+                  <input matInput type="email" formControlName="email" placeholder="E-mail">
+                  <mat-error *ngIf="hasError('email', 'required')" >Email is required</mat-error>
+                  <!-- <mat-error *ngIf="hasError('email', 'email')">Email must be a valid email address</mat-error> -->
+              </mat-form-field>
+             
+              
+              
+              <mat-form-field>
+                  <input matInput type="password" formControlName="password" placeholder="Password">
+                  <mat-error *ngIf="hasError('password', 'required')" >password is required</mat-error>
+                  <mat-error *ngIf="hasError('password', 'minlength')">Password must be at least 6 characters</mat-error>
+              </mat-form-field>
+
+              <table class="fullwidth" cellspacing="5">
+                  <tr>
+                      <td>
+                          <mat-form-field>
+                              <mat-label>المرحله التعليميه</mat-label>
+                              <mat-select value="A"  formControlName="level" >
+                                <mat-option type="number" value="1">الابتدائيه</mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="hasError('level', 'required')" >level is required</mat-error>
+                          </mat-form-field>
+                          
+                      </td>
+                      <td>
+                          <mat-form-field>
+                              <mat-label> الصف</mat-label>
+                              <mat-select value="two" formControlName="class">
+                                <mat-option value="الاول">الاول</mat-option>
+                                <mat-option value="الثاني">الثاني</mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="hasError('class', 'required')" >class is required</mat-error>
+
+                          </mat-form-field>
+                      </td>
+                  </tr>
+              </table>
+
+              <div>
+                <p id="errorMsg" >{{errorMsg}}</p>
+              </div>
+      
+              <div class="centerDiv">
+                  <button id="submitBtn" mat-raised-button color="accent" type="submit">Sign in</button>
+
+              </div>
+              
+            </form>
+      
+          </mat-card-content>
+        </mat-card>
+</section>

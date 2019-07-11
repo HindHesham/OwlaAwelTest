@@ -1,0 +1,46 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center" class="c">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+      <mat-card-content>
+  
+        <form enctype="multipart/form-data" [formGroup]="loginForm" (ngSubmit) = "onSubmit(loginForm.value)" fxLayout="column wrap"
+        fxLayoutAlign="center center" fxLayoutGap="10px">
+     
+          <mat-form-field>
+              <input matInput type="email" id="defaultLoginFormEmail" formControlName="email" placeholder="E-mail">
+  
+              <mat-error *ngIf="hasError('email', 'required')" >Email is required</mat-error>
+              <!-- <mat-error *ngIf="hasError('email', 'email')">Email must be a valid email address</mat-error> -->
+  
+          </mat-form-field>
+         
+          
+          <mat-form-field>
+              <input matInput type="password" id="defaultLoginFormPassword" formControlName="password" placeholder="Password">
+              <mat-error *ngIf="hasError('password', 'required')" >password is required</mat-error>
+              <mat-error *ngIf="hasError('password', 'minlength')">Password must be at least 6 characters</mat-error>
+  
+          </mat-form-field>
+  
+          <div>
+            <p id="errorMsg" >{{errorMsg}}</p>
+          </div>
+  
+          <div class="centerDiv">
+              <mat-checkbox [default]="true">Remember me</mat-checkbox>
+          </div>
+      
+          <div class="centerDiv">
+              <button id="submitBtn" mat-raised-button color="accent" type="submit">Login</button>
+          </div>
+  
+          <div class="centerDiv register">
+            <p>Not a member?
+              <a routerLink="/signup">Register</a>
+            </p>
+          </div>
+  
+        </form>
+  
+      </mat-card-content>
+    </mat-card>
+  </section> 
